@@ -48,7 +48,12 @@ func TambahTugas(toko *TokoTugas, judul string) (Task, error) {
 }
 
 func LihatTugas(toko *TokoTugas, id int) (Task, error) {
-	panic("belum diimplementasikan")
+    for _, t := range toko.Daftar {
+        if t.ID == id {
+            return t, nil
+        }
+    }
+    return Task{}, ErrTugasTidakDitemukan
 }
 
 func HapusTugas(toko *TokoTugas, id int) error {
